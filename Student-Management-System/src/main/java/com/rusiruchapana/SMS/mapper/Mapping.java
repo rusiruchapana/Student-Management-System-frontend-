@@ -16,6 +16,15 @@ public class Mapping {
        return student;
    }
 
-   
+   public StudentDto mapEntityToDto(Student student){
+
+       StudentDto studentDto = new StudentDto(
+               student.getId(),
+               student.getFirstName(),
+               student.getLastName(),
+               student.getEmail()
+       );
+       return  studentDto;
+   }
 
 }
