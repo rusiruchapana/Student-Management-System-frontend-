@@ -5,7 +5,7 @@ import com.rusiruchapana.SMS.entity.Student;
 
 public class Mapping {
 
-   public Student mapDtoToEntity(StudentDto studentDto){
+   public static Student mapDtoToEntity(StudentDto studentDto){
 
        Student student = new Student(
                studentDto.getId(),
@@ -16,7 +16,7 @@ public class Mapping {
        return student;
    }
 
-   public StudentDto mapEntityToDto(Student student){
+   public static StudentDto mapEntityToDto(Student student){
 
        StudentDto studentDto = new StudentDto(
                student.getId(),
