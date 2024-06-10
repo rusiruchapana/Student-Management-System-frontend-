@@ -9,8 +9,6 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "students")
 public class Student {
