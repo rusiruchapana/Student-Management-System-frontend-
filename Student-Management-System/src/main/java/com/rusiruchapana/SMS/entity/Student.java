@@ -14,7 +14,6 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 @Entity
 @Table(name = "students")
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
