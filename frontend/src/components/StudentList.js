@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Card from "./Card";
 
 function StudentList(){
     
@@ -16,10 +17,15 @@ function StudentList(){
     }, []);
 
     console.log(details);
-    return(
-        
+    return(    
         <>
-            
+           {details.map((std)=>{
+                return(
+                    <>
+                        <Card />
+                    </>
+                );
+           })} 
         </>
     );
 }
