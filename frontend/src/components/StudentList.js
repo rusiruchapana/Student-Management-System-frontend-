@@ -15,7 +15,7 @@ function StudentList(){
             });
     }, []);
 
-    
+    console.log(details);
     return(
         
         <>
