@@ -16,13 +16,13 @@ function StudentList(){
             });
     }, []);
 
-    //console.log(details);
+    console.log(details);
     return(    
         <>
-           {details.map(()=>{
+           {details.map((std)=>{
                 return(
                     <>
-                        <Card />
+                        <Card key={std[0].id} first_name={std[0].firstName} last_name={std[0].lastName} email={std[0].email}/>
                     </>
                 );
                 
