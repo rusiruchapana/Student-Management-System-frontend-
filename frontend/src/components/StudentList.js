@@ -4,7 +4,7 @@ import Card from "./Card";
 
 function StudentList(){
     
-    const[details , setDetails] = useState();
+    const[details , setDetails] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:8081/api/v1/student/students')
@@ -16,16 +16,17 @@ function StudentList(){
             });
     }, []);
 
-    console.log(details);
+    //console.log(details);
     return(    
         <>
-           {details.map((std)=>{
+           {details.map(()=>{
                 return(
                     <>
                         <Card />
                     </>
                 );
-           })} 
+                
+           })}
         </>
     );
 }
