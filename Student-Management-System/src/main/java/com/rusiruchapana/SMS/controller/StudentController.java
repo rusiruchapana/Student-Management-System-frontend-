@@ -4,6 +4,7 @@ import com.rusiruchapana.SMS.dto.StudentDto;
 import com.rusiruchapana.SMS.mapper.Mapping;
 import com.rusiruchapana.SMS.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +22,9 @@ public class StudentController {
 
 
     @GetMapping("/students")
-    public String students_list(Model model){
+    public ResponseEntity<List<StudentDto>> students_list(){
         List<StudentDto> studentDtos = studentService.findStudents();
-        model.addAttribute("details" , studentDtos);
-        return "students_details";
+        return ResponseEntity.ok(studentDtos);
     }
 
 
