@@ -16,7 +16,7 @@ function StudentList(){
 
     //console.log(data);
     return(    
-        <>
+        <div className="flex flex-wrap">
            {data.map((std)=>{
                 //console.log(std.firstName);
                 return(
@@ -25,7 +25,7 @@ function StudentList(){
                     </div>
                 );
            })}
-        </>
+        </div>
     );
 }
 
