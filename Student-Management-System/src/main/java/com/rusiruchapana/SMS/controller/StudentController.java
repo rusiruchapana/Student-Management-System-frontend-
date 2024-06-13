@@ -21,10 +21,16 @@ public class StudentController {
     private StudentService studentService;
 
 
+//    @GetMapping("/students")
+//    public ResponseEntity<List<StudentDto>> students_list(){
+//        List<StudentDto> studentDtos = studentService.findStudents();
+//        return ResponseEntity.ok(studentDtos);
+//    }
+
     @GetMapping("/students")
-    public ResponseEntity<List<StudentDto>> students_list(){
+    public List<StudentDto> students_list(){
         List<StudentDto> studentDtos = studentService.findStudents();
-        return ResponseEntity.ok(studentDtos);
+        return studentDtos;
     }
 
 
