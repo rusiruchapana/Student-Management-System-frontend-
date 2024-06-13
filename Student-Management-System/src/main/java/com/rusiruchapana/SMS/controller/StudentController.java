@@ -32,8 +32,9 @@ public class StudentController {
     }
 
     @PostMapping("/addstudent")
-    public void addStudent( @RequestBody StudentDto studentDto){
-
+    public String addStudent( @RequestBody StudentDto studentDto){
+        studentService.addStudent(studentDto);
+        return "Succesfully added student";
     }
 
 

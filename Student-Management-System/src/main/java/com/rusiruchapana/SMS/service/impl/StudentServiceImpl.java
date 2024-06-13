@@ -30,7 +30,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void addStudent() {
-
+    public void addStudent(StudentDto studentDto) {
+        Student student = Mapping.mapDtoToEntity(studentDto);
+        studentRepository.save(student);
     }
 }

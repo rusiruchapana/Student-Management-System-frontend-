@@ -7,6 +7,7 @@ import java.util.List;
 public interface StudentService {
 
     public List<StudentDto> findStudents();
-    public void addStudent();
+    public void addStudent(StudentDto studentDto);
+
 
 }
