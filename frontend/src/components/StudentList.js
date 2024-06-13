@@ -4,28 +4,26 @@ import Card from "./Card";
 
 function StudentList(){
     
-    const[details , setDetails] = useState([]);
+    
+    const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/api/v1/student/students')
-            .then(response => {
-                setDetails(response.data);
-            })
-            .catch(error => {
-                console.error('There was an error fetching the students!', error);
-            });
+        fetch('http://localhost:8081/api/v1/student/students')
+        .then(response => response.json())
+        .then(data => setData(data))
+        .catch(error => console.error('Error fetching data:', error));
     }, []);
 
-    console.log(details);
+    //console.log(data);
     return(    
         <>
-           {details.map((std)=>{
+           {data.map((std)=>{
+                //console.log(std.firstName);
                 return(
-                    <>
-                        <Card key={std[0].id} first_name={std[0].firstName} last_name={std[0].lastName} email={std[0].email}/>
-                    </>
+                    <div key={std.id}>
+                        <Card first_name={std.firstName}/>
+                    </div>
                 );
-                
            })}
         </>
     );
