@@ -21,7 +21,7 @@ function StudentList(){
                 //console.log(std.firstName);
                 return(
                     <div key={std.id}>
-                        <Card first_name={std.firstName}/>
+                        <Card id={std.id} first_name={std.firstName} last_name={std.lastName} email={std.email}   />
                     </div>
                 );
            })}
