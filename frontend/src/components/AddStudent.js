@@ -12,10 +12,15 @@ function AddStudent() {
   const[lasttName , setLasttName] =  useState('');
   const[email , setEmail] =  useState('');
 
+
   const handleSubmit = (e)=>{
         e.preventDefault();
         sendDataToBackend(firstName, lasttName, email);
   };
+
+
+
+  
 
 
 
