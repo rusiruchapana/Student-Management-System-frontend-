@@ -28,4 +28,9 @@ public class StudentServiceImpl implements StudentService {
 
         return dtos;
     }
+
+    @Override
+    public void addStudent() {
+
+    }
 }
