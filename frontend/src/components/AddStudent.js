@@ -11,7 +11,7 @@ function AddStudent() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
+            + Add new student
       </Button>
 
       <Modal
