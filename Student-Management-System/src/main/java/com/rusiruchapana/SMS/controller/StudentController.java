@@ -19,23 +19,28 @@ public class StudentController {
     private StudentService studentService;
 
 
-//    @GetMapping("/students")
-//    public ResponseEntity<List<StudentDto>> students_list(){
-//        List<StudentDto> studentDtos = studentService.findStudents();
-//        return ResponseEntity.ok(studentDtos);
-//    }
+    //create a student.
+    @PostMapping("/addstudent")
+    public String addStudent( @RequestBody StudentDto studentDto){
+        studentService.addStudent(studentDto);
+        return "Succesfully added student";
+    }
 
+    //get all students.
     @GetMapping("/students")
     public List<StudentDto> students_list(){
         List<StudentDto> studentDtos = studentService.findStudents();
         return studentDtos;
     }
 
-    @PostMapping("/addstudent")
-    public String addStudent( @RequestBody StudentDto studentDto){
-        studentService.addStudent(studentDto);
-        return "Succesfully added student";
+    //get a single student.
+    @GetMapping("/get-one-student/{student_id}")
+    public StudentDto get_One_Student(@PathVariable("student_id") Long id){
+        StudentDto studentDto = studentService.getOneStudent(id);
+        return studentDto;
     }
+
+
 
 
 

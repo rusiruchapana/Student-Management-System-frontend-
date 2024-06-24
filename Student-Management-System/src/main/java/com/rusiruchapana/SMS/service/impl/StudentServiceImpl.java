@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Override
+    public void addStudent(StudentDto studentDto) {
+        Student student = Mapping.mapDtoToEntity(studentDto);
+        studentRepository.save(student);
+    }
+
 
     @Override
     public List<StudentDto> findStudents() {
@@ -29,9 +37,15 @@ public class StudentServiceImpl implements StudentService {
         return dtos;
     }
 
+
     @Override
-    public void addStudent(StudentDto studentDto) {
-        Student student = Mapping.mapDtoToEntity(studentDto);
-        studentRepository.save(student);
+    public StudentDto getOneStudent(Long id) {
+        Optional<Student> optionalStudent = studentRepository.findById(id);
+        Student student = optionalStudent.get();
+        StudentDto studentDto = Mapping.mapEntityToDto(student);
+        return studentDto;
     }
+
+
+
 }
