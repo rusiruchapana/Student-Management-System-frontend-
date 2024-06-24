@@ -46,6 +46,24 @@ public class StudentServiceImpl implements StudentService {
         return studentDto;
     }
 
+    public StudentDto updateStudent(Long id , StudentDto studentDto){
+        Optional<Student> optionalStudent = studentRepository.findById(id);
+        Student student = optionalStudent.get();
+
+        //update student details.
+        Student student1 = Mapping.mapDtoToEntity(studentDto);
+
+        //updated the database details with new entered details;
+        student.setId(student1.getId());
+        student.setFirstName(student1.getFirstName());
+        student.setLastName(student1.getLastName());
+        student.setEmail(student1.getEmail());
+
+        studentRepository.save(student);
+
+        return Mapping.mapEntityToDto(student);
+
+    }
 
 
 }

@@ -40,7 +40,12 @@ public class StudentController {
         return studentDto;
     }
 
+    @PatchMapping("/updateStudent/{student_id}")
+    public StudentDto updateStudent(@PathVariable("student_id") Long id , @RequestBody StudentDto studentDto){
+        StudentDto studentDto1 = studentService.updateStudent(id , studentDto);
+        return  studentDto1;
 
+    }
 
 
 
