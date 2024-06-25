@@ -7,6 +7,7 @@ import com.rusiruchapana.SMS.repository.StudentRepository;
 import com.rusiruchapana.SMS.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void addStudent(StudentDto studentDto) {
-        Student student = Mapping.mapDtoToEntity(studentDto);
+        Student student = new Student();
+        student.setFirstName(student.getFirstName());
+        student.setLastName(studentDto.getLastName());
+        student.setEmail(studentDto.getEmail());
+
         studentRepository.save(student);
     }
 
@@ -63,6 +68,12 @@ public class StudentServiceImpl implements StudentService {
 
         return Mapping.mapEntityToDto(student);
 
+    }
+
+
+    public String deleteStudent(Long id){
+        studentRepository.deleteById(id);
+        return "Succesfully deleted";
     }
 
 

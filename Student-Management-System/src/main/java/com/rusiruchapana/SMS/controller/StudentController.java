@@ -21,9 +21,9 @@ public class StudentController {
 
     //create a student.
     @PostMapping("/addstudent")
-    public String addStudent( @RequestBody StudentDto studentDto){
+    public ResponseEntity<String> addStudent( @RequestBody StudentDto studentDto){
         studentService.addStudent(studentDto);
-        return "Succesfully added student";
+        return ResponseEntity.ok("succesfully saved");
     }
 
     //get all students.
@@ -45,6 +45,12 @@ public class StudentController {
         StudentDto studentDto1 = studentService.updateStudent(id , studentDto);
         return  studentDto1;
 
+    }
+
+    @DeleteMapping("/deleteStudent/{student_id}")
+    public String deleteStudent(@PathVariable("student_id") Long id){
+        String message = studentService.deleteStudent(id);
+       return message;
     }
 
 
