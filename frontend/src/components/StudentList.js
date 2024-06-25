@@ -10,7 +10,10 @@ function StudentList(){
     useEffect(() => {
         fetch('http://localhost:8081/api/v1/student/students')
         .then(response => response.json())
-        .then(data => setData(data))
+        .then(data => {
+            console.log(data);
+            return(setData(data));
+        })
         .catch(error => console.error('Error fetching data:', error));
     }, []);
 

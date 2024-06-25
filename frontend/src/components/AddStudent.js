@@ -9,8 +9,8 @@ function AddStudent() {
   const handleShow = () => setShow(true);
 
   const[details , setDetails] = useState({
-        name: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         email: ""
   });
 
@@ -29,28 +29,22 @@ function AddStudent() {
         fetch("http://localhost:8081/api/v1/student/addstudent",
             {
                 method: "POST",
-                
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify(details)
             }
         )
             .then((response)=>{return(response.json());})
             .then((data)=>{
-                    //console.log("Succesfully added data." , data);
-                    
-                        setDetails(
-                            {
-                                name:"",
-                                lastname:"",
-                                email:""
-                            }
-                        )
+                        
                     
             })
             .catch((e)=>{
                     console.log("Error" , e);
             })
 
-            handleClose();
+            
   }
 
 
@@ -82,7 +76,7 @@ function AddStudent() {
                     </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" name='name' onChange={handleEvent} value={details.name} />
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" name='firstName' onChange={handleEvent} value={details.firstName} />
                     </div>
                 </div>
 
@@ -93,7 +87,7 @@ function AddStudent() {
                     </label>
                     </div>
                     <div class="md:w-2/3">
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" name='lastname' onChange={handleEvent} value={details.lastname}/>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" name='lastName' onChange={handleEvent} value={details.lastName}/>
                     </div>
                 </div>
 

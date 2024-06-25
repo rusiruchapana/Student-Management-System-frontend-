@@ -21,9 +21,9 @@ public class StudentController {
 
     //create a student.
     @PostMapping("/addstudent")
-    public ResponseEntity<String> addStudent( @RequestBody StudentDto studentDto){
+    public String addStudent( @RequestBody StudentDto studentDto){
         studentService.addStudent(studentDto);
-        return ResponseEntity.ok("succesfully saved");
+        return "Succesfully saved";
     }
 
     //get all students.

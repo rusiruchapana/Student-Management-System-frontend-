@@ -22,11 +22,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void addStudent(StudentDto studentDto) {
-        Student student = new Student();
-        student.setFirstName(student.getFirstName());
-        student.setLastName(studentDto.getLastName());
-        student.setEmail(studentDto.getEmail());
+//        Student student = new Student();
+//        student.setFirstName(student.getFirstName());
+//        student.setLastName(studentDto.getLastName());
+//        student.setEmail(studentDto.getEmail());
 
+        Student student = Mapping.mapDtoToEntity(studentDto);
         studentRepository.save(student);
     }
 
