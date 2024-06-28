@@ -5,6 +5,7 @@ function Student() {
 
   const[details , setDetails] = useState([]);
   
+  //showing all students.
   useEffect((e)=>{
 
     fetch('http://localhost:8081/api/v1/student/students')
@@ -27,6 +28,7 @@ function Student() {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Username</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -38,6 +40,18 @@ function Student() {
                     <td>{student.firstName}</td>
                     <td>{student.lastName}</td>
                     <td>{student.email}</td>
+                    <td>
+                        <div>
+                          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-3 mr-3">
+                            Update
+                          </button>
+
+                          <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                            Delete
+                          </button>
+                        </div>
+                      
+                    </td>
                   </tr>
               </>
             );
