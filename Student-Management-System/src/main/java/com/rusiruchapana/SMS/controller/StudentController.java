@@ -22,8 +22,7 @@ public class StudentController {
     //create a student.
     @PostMapping("/addstudent")
     public ResponseEntity<StudentDto> addStudent( @RequestBody StudentDto studentDto){
-        StudentDto studentDto1 = studentService.addStudent(studentDto);
-        return ResponseEntity.ok(studentDto1);
+        return ResponseEntity.ok(studentService.addStudent(studentDto));
     }
 
     //get all students.
@@ -48,9 +47,9 @@ public class StudentController {
     }
 
     @DeleteMapping("/deleteStudent/{student_id}")
-    public String deleteStudent(@PathVariable("student_id") Long id){
+    public ResponseEntity<String> deleteStudent(@PathVariable("student_id") Long id){
         String message = studentService.deleteStudent(id);
-       return message;
+       return ResponseEntity.ok(message);
     }
 
 
