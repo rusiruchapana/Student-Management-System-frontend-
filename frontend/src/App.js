@@ -6,8 +6,8 @@ import Student from './components/Student';
 function App() {
   return (
     <>
-        <Form />
-        {/* <Student /> */}
+        <Student />
+        
     </>
   );
 }

@@ -8,6 +8,7 @@ function FormEntry(){
         email:""
     });
 
+
     const handleEvent = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -16,28 +17,34 @@ function FormEntry(){
         });
     };
 
-    const handleSubmit = async (e) => {
+
+    const handleSubmit = (e) => {
         e.preventDefault();
     
-        try {
-          const response = await fetch('http://localhost:8081/api/v1/student/addstudent', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-    
-          if (response.ok) {
-            const result = await response.json();
-            console.log('Data saved successfully:', result);
-          } else {
-            console.error('Error saving data:', response.statusText);
-          }
-        } catch (error) {
+        // Use fetch to send data to the backend
+        fetch('http://localhost:8081/api/v1/student/addstudent', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log('Form Submitted:', result);
+        })
+        .catch(error => {
           console.error('Error:', error);
-        }
+        });
+        setFormData({
+            firstName:"",
+            lastName:"",
+            email:""
+        });
       };
+    
+
+    
 
     return(
         <div class="flex justify-center items-center h-screen">
@@ -47,21 +54,21 @@ function FormEntry(){
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                             FirstName
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" onChange={handleEvent} name="firstName"/>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" onChange={handleEvent} name="firstName" value={formData.firstName} />
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                             LastName
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" onChange={handleEvent} name="lastName"/>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" onChange={handleEvent} name="lastName" value={formData.lastName} />
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                             Email
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" onChange={handleEvent} name="email"/>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" onChange={handleEvent} name="email" value={formData.email} />
                     </div>
 
                     

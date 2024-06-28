@@ -1,6 +1,24 @@
+import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 
 function Student() {
+
+  const[details , setDetails] = useState([]);
+  
+  useEffect((e)=>{
+
+    fetch('http://localhost:8081/api/v1/student/students')
+    .then(response => response.json())
+    .then(result => {
+      return(setDetails(result));
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+  } , []);
+
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -12,12 +30,20 @@ function Student() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
+          {details.map((student)=>{
+            return(
+              <>
+                  <tr>
+                    <td>{student.id}</td>
+                    <td>{student.firstName}</td>
+                    <td>{student.lastName}</td>
+                    <td>{student.email}</td>
+                  </tr>
+              </>
+            );
+               
+          })}
+       
       </tbody>
     </Table>
   );

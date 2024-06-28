@@ -6,6 +6,7 @@ import com.rusiruchapana.SMS.mapper.Mapping;
 import com.rusiruchapana.SMS.repository.StudentRepository;
 import com.rusiruchapana.SMS.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
@@ -21,7 +22,7 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
 
     @Override
-    public void addStudent(StudentDto studentDto) {
+    public StudentDto addStudent(StudentDto studentDto) {
 //        Student student = new Student();
 //        student.setFirstName(student.getFirstName());
 //        student.setLastName(studentDto.getLastName());
@@ -29,6 +30,9 @@ public class StudentServiceImpl implements StudentService {
 
         Student student = Mapping.mapDtoToEntity(studentDto);
         studentRepository.save(student);
+
+        StudentDto studentDto1 = Mapping.mapEntityToDto(student);
+        return studentDto1;
     }
 
 
