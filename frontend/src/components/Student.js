@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { useNavigate } from 'react-router-dom';
+import './Update';
+import Update from './Update';
 
 function Student() {
   const navigate = useNavigate();
@@ -47,13 +49,13 @@ function Student() {
                   <tr>
                     <td>{student.id}</td>
                     <td>{student.firstName}</td>
+                    
                     <td>{student.lastName}</td>
                     <td>{student.email}</td>
                     <td>
                         <div>
-                          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-3 mr-3">
-                            Update
-                          </button>
+                          
+                          <Update />
 
                           <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" onClick={()=>{
                                   
