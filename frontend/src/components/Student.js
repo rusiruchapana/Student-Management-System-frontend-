@@ -35,6 +35,7 @@ function Student() {
     <Table striped bordered hover>
       <thead>
         <tr>
+          <th>Number</th>
           <th>Id</th>
           <th>First Name</th>
           <th>Last Name</th>
@@ -43,10 +44,11 @@ function Student() {
         </tr>
       </thead>
       <tbody>
-          {details.map((student)=>{
+          {details.map((student,index)=>{
             return(
               <>
                   <tr>
+                    <td>{index+1}</td>
                     <td>{student.id}</td>
                     <td>{student.firstName}</td>
                     
