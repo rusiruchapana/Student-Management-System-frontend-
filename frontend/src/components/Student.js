@@ -27,7 +27,7 @@ function Student() {
   }
   
 
-
+  
 
 
 
@@ -55,7 +55,7 @@ function Student() {
                     <td>
                         <div>
                           
-                          <Update first_name={student.firstName} last_name={student.lastName} email={student.email} />
+                          <Update id={student.id}  first_name={student.firstName} last_name={student.lastName} email={student.email} />
 
                           <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" onClick={()=>{
                                   
